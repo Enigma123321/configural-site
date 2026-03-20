@@ -1,16 +1,19 @@
 import { useState } from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography, IconButton, useScrollTrigger } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 
 export default function AnnouncementBanner() {
-  const [visible, setVisible] = useState(true);
+  const [dismissed, setDismissed] = useState(false);
+  const scrolled = useScrollTrigger({ disableHysteresis: true, threshold: 50 });
 
-  if (!visible) {
-    // Remove banner offset when dismissed
+  if (dismissed) {
     document.documentElement.style.setProperty('--banner-height', '0px');
     return null;
   }
+
+  // Hide banner on scroll so navbar can sit at top:0
+  const hidden = scrolled;
 
   return (
     <Box
@@ -35,6 +38,8 @@ export default function AnnouncementBanner() {
         alignItems: 'center',
         justifyContent: 'center',
         gap: 1,
+        transform: hidden ? 'translateY(-100%)' : 'translateY(0)',
+        transition: 'transform 0.3s ease',
       }}
     >
       <Box
@@ -92,7 +97,7 @@ export default function AnnouncementBanner() {
         </Typography>
       </Box>
       <IconButton
-        onClick={() => setVisible(false)}
+        onClick={() => setDismissed(true)}
         sx={{
           color: 'rgba(248,250,251,0.5)',
           p: 0.3,
