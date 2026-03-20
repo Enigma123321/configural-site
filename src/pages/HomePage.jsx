@@ -370,7 +370,7 @@ export default function HomePage() {
       <Box sx={{ background: '#F8FAFB', py: { xs: 10, md: 16 } }}>
         <Container maxWidth="lg">
           <Grid container spacing={8} alignItems="center">
-            <Grid size={{ xs: 12, md: 6 }}>
+            <Grid size={{ xs: 12, md: 6 }} sx={{ display: { xs: 'none', md: 'block' } }}>
               <MotionBox
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
