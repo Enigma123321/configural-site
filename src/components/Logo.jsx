@@ -113,17 +113,14 @@ const Logo = ({ size = 40, light = true, iconOnly = false }) => {
       >
         <Box
           sx={{
-            fontFamily: '"DM Sans Variable", "DM Sans", sans-serif',
+            fontFamily: '"Space Grotesk", sans-serif',
             fontWeight: 700,
             fontSize: `${fontSize}px`,
-            letterSpacing: '-0.03em',
+            letterSpacing: '-0.02em',
             display: 'flex',
           }}
         >
-          <span style={{ color: primary }}>Con</span>
-          <span style={{ color: '#23CED9' }}>fig</span>
-          <span style={{ color: primary }}>ur</span>
-          <span style={{ color: '#FCA47C' }}>al</span>
+          <span style={{ color: '#FCA47C' }}>Configural</span>
         </Box>
         <Box
           sx={{
@@ -137,7 +134,7 @@ const Logo = ({ size = 40, light = true, iconOnly = false }) => {
             opacity: 0.85,
           }}
         >
-          AI Platform
+          Healthcare Administration
         </Box>
       </Box>
     </Box>
