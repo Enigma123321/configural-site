@@ -31,29 +31,205 @@ const results = [
   { value: '3 min', label: 'Referral processing time' },
 ];
 
-function HeroStageIcon({ iconId }) {
-  const faceMap = {
-    referral: '/faces/referral.jpg',
-    scheduling: '/faces/scheduling.jpg',
-    care: '/faces/care.jpg',
-    outreach: '/faces/outreach.jpg',
-    gaps: '/faces/gaps.jpg',
-    survivorship: '/faces/survivorship.jpg',
+function AnimatedStageIcon({ iconId, size = 52 }) {
+  const icons = {
+    referral: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Incoming document with scan line */}
+        <rect x="12" y="6" width="24" height="32" rx="3" stroke="#FCA47C" strokeWidth="2" fill="none">
+          <animate attributeName="opacity" values="0.5;1;0.5" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <line x1="18" y1="14" x2="30" y2="14" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="18" y1="19" x2="28" y2="19" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="18" y1="24" x2="26" y2="24" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" />
+        {/* Scan line */}
+        <line x1="12" y1="6" x2="36" y2="6" stroke="#FCA47C" strokeWidth="2" opacity="0.8">
+          <animate attributeName="y1" values="6;38;6" dur="2.5s" repeatCount="indefinite" />
+          <animate attributeName="y2" values="6;38;6" dur="2.5s" repeatCount="indefinite" />
+        </line>
+        {/* Check mark appearing */}
+        <circle cx="34" cy="34" r="7" fill="#097C87" stroke="#23CED9" strokeWidth="1.5">
+          <animate attributeName="r" values="5;7;5" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <path d="M30 34 L33 37 L38 31" stroke="#F8FAFB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none">
+          <animate attributeName="stroke-dashoffset" values="20;0;0" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="stroke-dasharray" values="0 20;20 0;20 0" dur="2s" repeatCount="indefinite" />
+        </path>
+      </svg>
+    ),
+    scheduling: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Calendar */}
+        <rect x="8" y="10" width="32" height="28" rx="3" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <line x1="8" y1="18" x2="40" y2="18" stroke="#FCA47C" strokeWidth="2" />
+        <line x1="18" y1="10" x2="18" y2="6" stroke="#FCA47C" strokeWidth="2" strokeLinecap="round" />
+        <line x1="30" y1="10" x2="30" y2="6" stroke="#FCA47C" strokeWidth="2" strokeLinecap="round" />
+        {/* Slots filling in */}
+        <rect x="12" y="22" width="6" height="4" rx="1" fill="#23CED9">
+          <animate attributeName="opacity" values="0;1;1;1" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <rect x="21" y="22" width="6" height="4" rx="1" fill="#23CED9">
+          <animate attributeName="opacity" values="0;0;1;1" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <rect x="30" y="22" width="6" height="4" rx="1" fill="#23CED9">
+          <animate attributeName="opacity" values="0;0;0;1" dur="3s" repeatCount="indefinite" />
+        </rect>
+        <rect x="12" y="29" width="6" height="4" rx="1" fill="#097C87">
+          <animate attributeName="opacity" values="0;0;1;1" dur="3.5s" repeatCount="indefinite" />
+        </rect>
+        <rect x="21" y="29" width="6" height="4" rx="1" fill="#097C87">
+          <animate attributeName="opacity" values="0;0;0;1" dur="3.5s" repeatCount="indefinite" />
+        </rect>
+      </svg>
+    ),
+    care: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Heart with pulse */}
+        <path d="M24 38 C24 38 8 28 8 18 C8 12 12 8 18 8 C21 8 23 10 24 12 C25 10 27 8 30 8 C36 8 40 12 40 18 C40 28 24 38 24 38Z" stroke="#FCA47C" strokeWidth="2" fill="none">
+          <animate attributeName="stroke" values="#FCA47C;#23CED9;#FCA47C" dur="2s" repeatCount="indefinite" />
+        </path>
+        {/* Pulse line */}
+        <polyline points="6,24 16,24 19,18 22,30 25,20 28,26 32,24 42,24" stroke="#23CED9" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+          <animate attributeName="stroke-dashoffset" values="60;0" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="stroke-dasharray" values="0 60;60 0" dur="2s" repeatCount="indefinite" />
+        </polyline>
+      </svg>
+    ),
+    outreach: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Phone */}
+        <path d="M14 8 C14 8 10 10 10 16 C10 24 16 32 24 36 C30 40 36 38 38 34 L36 30 L30 32 C26 30 20 24 18 20 L20 14 L16 10Z" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        {/* Signal waves */}
+        <path d="M30 8 C34 8 38 12 38 16" stroke="#23CED9" strokeWidth="2" strokeLinecap="round" fill="none">
+          <animate attributeName="opacity" values="0;1;0" dur="1.5s" repeatCount="indefinite" />
+        </path>
+        <path d="M30 14 C32 14 34 16 34 18" stroke="#23CED9" strokeWidth="2" strokeLinecap="round" fill="none">
+          <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.3s" repeatCount="indefinite" />
+        </path>
+        <path d="M26 4 C34 4 40 10 40 18" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" fill="none">
+          <animate attributeName="opacity" values="0;1;0" dur="1.5s" begin="0.6s" repeatCount="indefinite" />
+        </path>
+      </svg>
+    ),
+    gaps: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Shield */}
+        <path d="M24 4 L38 10 L38 24 C38 34 24 44 24 44 C24 44 10 34 10 24 L10 10Z" stroke="#FCA47C" strokeWidth="2" fill="none">
+          <animate attributeName="opacity" values="0.6;1;0.6" dur="3s" repeatCount="indefinite" />
+        </path>
+        {/* Scanning circles */}
+        <circle cx="24" cy="22" r="4" stroke="#23CED9" strokeWidth="1.5" fill="none">
+          <animate attributeName="r" values="4;8;4" dur="2s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="24" cy="22" r="2" fill="#23CED9">
+          <animate attributeName="r" values="2;3;2" dur="1.5s" repeatCount="indefinite" />
+        </circle>
+        {/* Check */}
+        <path d="M20 32 L23 35 L28 29" stroke="#FCA47C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none">
+          <animate attributeName="stroke-dashoffset" values="15;0;0" dur="2.5s" repeatCount="indefinite" />
+          <animate attributeName="stroke-dasharray" values="0 15;15 0;15 0" dur="2.5s" repeatCount="indefinite" />
+        </path>
+      </svg>
+    ),
+    survivorship: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        {/* Circular timeline */}
+        <circle cx="24" cy="24" r="16" stroke="rgba(35,206,217,0.3)" strokeWidth="2" fill="none" />
+        <circle cx="24" cy="24" r="16" stroke="#23CED9" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeDasharray="100 100">
+          <animate attributeName="stroke-dashoffset" values="100;0" dur="3s" repeatCount="indefinite" />
+        </circle>
+        {/* Center person */}
+        <circle cx="24" cy="20" r="4" stroke="#FCA47C" strokeWidth="1.5" fill="none" />
+        <path d="M16 32 C16 27 20 24 24 24 C28 24 32 27 32 32" stroke="#FCA47C" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+        {/* Milestone dots */}
+        <circle cx="24" cy="8" r="2.5" fill="#FCA47C">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="38" cy="18" r="2.5" fill="#23CED9">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="0.5s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="38" cy="32" r="2.5" fill="#FCA47C">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="10" cy="32" r="2.5" fill="#23CED9">
+          <animate attributeName="opacity" values="0.3;1;0.3" dur="2s" begin="1.5s" repeatCount="indefinite" />
+        </circle>
+      </svg>
+    ),
   };
+  const extra = {
+    scheduler: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="16" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <line x1="24" y1="24" x2="24" y2="14" stroke="#23CED9" strokeWidth="2.5" strokeLinecap="round">
+          <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="8s" repeatCount="indefinite" />
+        </line>
+        <line x1="24" y1="24" x2="32" y2="24" stroke="#FCA47C" strokeWidth="2" strokeLinecap="round">
+          <animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="3s" repeatCount="indefinite" />
+        </line>
+        <circle cx="24" cy="24" r="2.5" fill="#23CED9"><animate attributeName="r" values="2;3;2" dur="2s" repeatCount="indefinite" /></circle>
+      </svg>
+    ),
+    resource: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <rect x="6" y="20" width="10" height="20" rx="2" stroke="#23CED9" strokeWidth="2" fill="none" />
+        <rect x="19" y="12" width="10" height="28" rx="2" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <rect x="32" y="16" width="10" height="24" rx="2" stroke="#23CED9" strokeWidth="2" fill="none" />
+        <rect x="8" y="20" width="6" height="0" fill="#23CED9" opacity="0.6"><animate attributeName="height" values="0;20;0" dur="3s" repeatCount="indefinite" /><animate attributeName="y" values="40;20;40" dur="3s" repeatCount="indefinite" /></rect>
+        <rect x="21" y="12" width="6" height="0" fill="#FCA47C" opacity="0.6"><animate attributeName="height" values="0;28;0" dur="3s" begin="0.5s" repeatCount="indefinite" /><animate attributeName="y" values="40;12;40" dur="3s" begin="0.5s" repeatCount="indefinite" /></rect>
+        <rect x="34" y="16" width="6" height="0" fill="#23CED9" opacity="0.6"><animate attributeName="height" values="0;24;0" dur="3s" begin="1s" repeatCount="indefinite" /><animate attributeName="y" values="40;16;40" dur="3s" begin="1s" repeatCount="indefinite" /></rect>
+      </svg>
+    ),
+    infusion: icons.care,
+    companion: icons.outreach,
+    auth: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <rect x="10" y="8" width="28" height="32" rx="3" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <line x1="16" y1="16" x2="32" y2="16" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" />
+        <line x1="16" y1="22" x2="28" y2="22" stroke="#23CED9" strokeWidth="1.5" strokeLinecap="round" />
+        <circle cx="32" cy="32" r="8" fill="#097C87" stroke="#23CED9" strokeWidth="1.5"><animate attributeName="r" values="6;8;6" dur="2s" repeatCount="indefinite" /></circle>
+        <path d="M28 32 L31 35 L36 29" stroke="#F8FAFB" strokeWidth="2" strokeLinecap="round" fill="none"><animate attributeName="stroke-dashoffset" values="15;0;0" dur="2s" repeatCount="indefinite" /><animate attributeName="stroke-dasharray" values="0 15;15 0;15 0" dur="2s" repeatCount="indefinite" /></path>
+      </svg>
+    ),
+    sdoh: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="16" r="6" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <path d="M12 38 C12 30 17 26 24 26 C31 26 36 30 36 38" stroke="#FCA47C" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M24 42 L24 32 M20 36 L28 36" stroke="#23CED9" strokeWidth="2.5" strokeLinecap="round"><animate attributeName="opacity" values="0.4;1;0.4" dur="2s" repeatCount="indefinite" /></path>
+      </svg>
+    ),
+    triage: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <path d="M24 6 L24 20" stroke="#FCA47C" strokeWidth="3" strokeLinecap="round"><animate attributeName="opacity" values="0.5;1;0.5" dur="1.5s" repeatCount="indefinite" /></path>
+        <circle cx="24" cy="26" r="3" fill="#FCA47C"><animate attributeName="r" values="2;3.5;2" dur="1.5s" repeatCount="indefinite" /></circle>
+        <path d="M10 36 L24 30 L38 36" stroke="#23CED9" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <circle cx="10" cy="38" r="3" fill="#23CED9" opacity="0.7" /><circle cx="24" cy="32" r="3" fill="#FCA47C" opacity="0.7" /><circle cx="38" cy="38" r="3" fill="#23CED9" opacity="0.7" />
+      </svg>
+    ),
+    waitlist: icons.scheduling,
+    staff: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <circle cx="18" cy="14" r="5" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <circle cx="34" cy="14" r="5" stroke="#23CED9" strokeWidth="2" fill="none" />
+        <path d="M8 30 C8 24 12 20 18 20 C22 20 25 22 26 25" stroke="#FCA47C" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <path d="M24 30 C24 24 28 20 34 20 C40 20 44 24 44 30" stroke="#23CED9" strokeWidth="2" fill="none" strokeLinecap="round" />
+        <line x1="14" y1="36" x2="38" y2="36" stroke="#FCA47C" strokeWidth="2" strokeLinecap="round"><animate attributeName="x2" values="14;38;14" dur="3s" repeatCount="indefinite" /></line>
+      </svg>
+    ),
+    insurance: (
+      <svg width={size} height={size} viewBox="0 0 48 48" fill="none">
+        <path d="M24 4 L40 12 L40 24 C40 36 24 44 24 44 C24 44 8 36 8 24 L8 12Z" stroke="#FCA47C" strokeWidth="2" fill="none" />
+        <text x="24" y="28" textAnchor="middle" fill="#23CED9" fontSize="14" fontWeight="bold">$</text>
+        <circle cx="24" cy="24" r="12" stroke="#23CED9" strokeWidth="1.5" fill="none" strokeDasharray="6 4"><animateTransform attributeName="transform" type="rotate" from="0 24 24" to="360 24 24" dur="8s" repeatCount="indefinite" /></circle>
+      </svg>
+    ),
+  };
+  const allIcons = { ...icons, ...extra };
   return (
-    <Box
-      component="img"
-      src={faceMap[iconId]}
-      alt={iconId}
-      sx={{
-        width: 56,
-        height: 56,
-        borderRadius: '50%',
-        objectFit: 'cover',
-        border: '2px solid rgba(252,164,124,0.5)',
-        boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
-      }}
-    />
+    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: size, height: size }}>
+      {allIcons[iconId] || icons.referral}
+    </Box>
   );
 }
 
@@ -400,7 +576,7 @@ export default function HomePage() {
                       }}
                     >
                       <Box sx={{ mb: 0.5, display: 'flex', justifyContent: 'center' }}>
-                        <HeroStageIcon iconId={item.iconId} />
+                        <AnimatedStageIcon iconId={item.iconId} size={52} />
                       </Box>
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.1em', mb: 0.5, textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
                         {item.stage}
@@ -869,20 +1045,20 @@ export default function HomePage() {
                   >
                     {/* Header row */}
                     <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2.5 }}>
-                      <Box
-                        component="img"
-                        src={`/faces/${agent.iconId}.jpg`}
-                        alt={agent.title}
-                        sx={{
+                      <Box sx={{
                           width: 52,
                           height: 52,
                           borderRadius: '50%',
-                          objectFit: 'cover',
-                          border: '2px solid rgba(252,164,124,0.5)',
+                          border: '2px solid rgba(252,164,124,0.3)',
                           boxShadow: '0 2px 12px rgba(0,0,0,0.3)',
                           flexShrink: 0,
-                        }}
-                      />
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          background: 'rgba(9,124,135,0.2)',
+                        }}>
+                        <AnimatedStageIcon iconId={agent.iconId} size={36} />
+                      </Box>
                       <Box>
                         <Typography sx={{ color: '#F8FAFB', fontWeight: 700, fontSize: '1.2rem', fontFamily: '"Cormorant Garamond Variable", Georgia, serif', lineHeight: 1.2 }}>
                           {agent.title}
