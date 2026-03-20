@@ -17,7 +17,7 @@ const journeySteps = [
   { label: 'Referral\nIntake', icon: 'referral', desc: 'AI reads faxes, extracts data, matches patients, and verifies insurance in minutes.' },
   { label: 'Initial\nConsultation', icon: 'consult', desc: 'Smart scheduling across providers, rooms, and resources. Protocol-aware sequencing.' },
   { label: 'Treatment\nPlanning', icon: 'planning', desc: 'Automated eligibility checks, prior auth, and care plan coordination across systems.' },
-  { label: 'Active\nCare', icon: 'care', desc: 'Real-time symptom monitoring, CTCAE scoring, and proactive clinical escalation.' },
+  { label: 'Active\nCare', icon: 'care', desc: 'Real-time symptom monitoring, clinical scoring, and proactive escalation.' },
   { label: 'Post-\nTreatment', icon: 'post', desc: 'Automated follow-ups, PRO questionnaires, and care gap surveillance 24/7.' },
   { label: 'Survivorship', icon: 'survivor', desc: 'Long-term engagement, wellness tracking, and continuous care coordination.' },
 ];
@@ -56,6 +56,15 @@ function HeroStageIcon({ iconId }) {
     />
   );
 }
+
+const heroTaglines = [
+  'AI That Thinks Like Your Best Staff — For Every Step Of The Patient Journey',
+  'It Thinks Like A Human. It Works Like A Hundred.',
+  'AI That Thinks Like Your Team, Works Around The Clock',
+  'Smart Enough To Think Like A Human. Built To Manage The Entire Patient Journey.',
+];
+
+const randomTagline = heroTaglines[Math.floor(Math.random() * heroTaglines.length)];
 
 export default function HomePage() {
   return (
@@ -99,49 +108,71 @@ export default function HomePage() {
             @keyframes orbFloat4 { 0% { transform: translate(0, 0) scale(1); } 33% { transform: translate(-60px, -70px) scale(1.15); } 66% { transform: translate(50px, 30px) scale(0.9); } 100% { transform: translate(0, 0) scale(1); } }
             @keyframes orbFloat5 { 0% { transform: translate(0, 0) scale(1); } 20% { transform: translate(90px, 30px) scale(1.1); } 40% { transform: translate(-40px, 70px) scale(0.95); } 60% { transform: translate(-70px, -50px) scale(1.2); } 80% { transform: translate(30px, -40px) scale(0.9); } 100% { transform: translate(0, 0) scale(1); } }
             @keyframes shimmerSweep { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-            @keyframes pulseGlow { 0%,100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.35; transform: scale(1.05); } }
-            @keyframes particleRise { 0% { transform: translateY(0) translateX(0); opacity: 0; } 15% { opacity: 0.8; } 85% { opacity: 0.8; } 100% { transform: translateY(-250px) translateX(50px); opacity: 0; } }
+            @keyframes shimmerSweep2 { 0% { transform: translateX(100%) rotate(15deg); } 100% { transform: translateX(-100%) rotate(15deg); } }
+            @keyframes pulseGlow { 0%,100% { opacity: 0.15; transform: scale(1); } 50% { opacity: 0.4; transform: scale(1.08); } }
+            @keyframes starTwinkle { 0%,100% { opacity: 0.1; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.4); } }
+            @keyframes starTwinkleBright { 0%,100% { opacity: 0.3; transform: scale(1); } 30% { opacity: 1; transform: scale(1.8); } 60% { opacity: 0.5; transform: scale(0.9); } }
+            @keyframes driftUp { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { transform: translateY(-300px) translateX(40px); opacity: 0; } }
+            @keyframes driftDown { 0% { transform: translateY(0) translateX(0); opacity: 0; } 10% { opacity: 0.8; } 90% { opacity: 0.8; } 100% { transform: translateY(200px) translateX(-30px); opacity: 0; } }
+            @keyframes connectionPulse { 0%,100% { stroke-dashoffset: 200; opacity: 0; } 50% { stroke-dashoffset: 0; opacity: 0.3; } }
           `}</style>
-          {/* Large floating gradient orbs — more vivid and dynamic */}
+          {/* Large floating gradient orbs — vivid and dynamic */}
           <Box sx={{
-            position: 'absolute', width: '700px', height: '700px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(252,164,124,0.22) 0%, rgba(252,164,124,0.05) 50%, transparent 70%)',
-            top: '-15%', right: '-8%', animation: 'orbFloat1 12s ease-in-out infinite',
+            position: 'absolute', width: '750px', height: '750px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(252,164,124,0.28) 0%, rgba(252,164,124,0.08) 45%, transparent 70%)',
+            top: '-15%', right: '-8%', animation: 'orbFloat1 10s ease-in-out infinite',
+          }} />
+          <Box sx={{
+            position: 'absolute', width: '650px', height: '650px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(35,206,217,0.32) 0%, rgba(35,206,217,0.08) 45%, transparent 70%)',
+            top: '20%', left: '-10%', animation: 'orbFloat2 13s ease-in-out infinite',
           }} />
           <Box sx={{
             position: 'absolute', width: '600px', height: '600px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(35,206,217,0.25) 0%, rgba(35,206,217,0.06) 50%, transparent 70%)',
-            top: '20%', left: '-10%', animation: 'orbFloat2 15s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(9,124,135,0.35) 0%, rgba(9,124,135,0.08) 45%, transparent 70%)',
+            bottom: '-10%', right: '15%', animation: 'orbFloat3 9s ease-in-out infinite',
+          }} />
+          <Box sx={{
+            position: 'absolute', width: '450px', height: '450px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(252,164,124,0.2) 0%, transparent 55%)',
+            top: '55%', left: '25%', animation: 'orbFloat4 11s ease-in-out infinite',
           }} />
           <Box sx={{
             position: 'absolute', width: '550px', height: '550px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(9,124,135,0.3) 0%, rgba(9,124,135,0.06) 50%, transparent 70%)',
-            bottom: '-10%', right: '15%', animation: 'orbFloat3 10s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(35,206,217,0.18) 0%, transparent 55%)',
+            top: '-5%', left: '50%', animation: 'orbFloat5 14s ease-in-out infinite',
           }} />
           <Box sx={{
             position: 'absolute', width: '400px', height: '400px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(252,164,124,0.15) 0%, transparent 60%)',
-            top: '55%', left: '25%', animation: 'orbFloat4 13s ease-in-out infinite',
+            background: 'radial-gradient(circle, rgba(252,164,124,0.22) 0%, transparent 55%)',
+            bottom: '5%', left: '-5%', animation: 'orbFloat1 16s ease-in-out infinite',
           }} />
+          {/* Extra accent orb */}
           <Box sx={{
-            position: 'absolute', width: '500px', height: '500px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(35,206,217,0.12) 0%, transparent 60%)',
-            top: '-5%', left: '50%', animation: 'orbFloat5 16s ease-in-out infinite',
-          }} />
-          <Box sx={{
-            position: 'absolute', width: '350px', height: '350px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(252,164,124,0.18) 0%, transparent 60%)',
-            bottom: '5%', left: '-5%', animation: 'orbFloat1 18s ease-in-out infinite',
+            position: 'absolute', width: '300px', height: '300px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 50%)',
+            top: '30%', right: '20%', animation: 'orbFloat4 8s ease-in-out infinite',
           }} />
           {/* Pulsing glow center */}
           <Box sx={{
-            position: 'absolute', width: '800px', height: '800px', borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(9,124,135,0.12) 0%, transparent 60%)',
-            top: '50%', left: '50%', marginLeft: '-400px', marginTop: '-400px',
-            animation: 'pulseGlow 4s ease-in-out infinite',
+            position: 'absolute', width: '900px', height: '900px', borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(9,124,135,0.18) 0%, transparent 55%)',
+            top: '50%', left: '50%', marginLeft: '-450px', marginTop: '-450px',
+            animation: 'pulseGlow 3.5s ease-in-out infinite',
           }} />
-          {/* Floating particles — more and brighter */}
+          {/* Floating particles — lots of dots with varying brightness */}
           <svg style={{ position: 'absolute', inset: 0, width: '100%', height: '100%' }}>
+            {/* Connection lines between bright dots */}
+            <line x1="15%" y1="20%" x2="38%" y2="18%" stroke="#23CED9" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.15">
+              <animate attributeName="opacity" values="0.05;0.25;0.05" dur="4s" repeatCount="indefinite" />
+            </line>
+            <line x1="60%" y1="15%" x2="82%" y2="35%" stroke="#FCA47C" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.15">
+              <animate attributeName="opacity" values="0.05;0.2;0.05" dur="5s" begin="1s" repeatCount="indefinite" />
+            </line>
+            <line x1="25%" y1="70%" x2="55%" y2="60%" stroke="#F8FAFB" strokeWidth="0.3" strokeDasharray="3 5" opacity="0.1">
+              <animate attributeName="opacity" values="0.03;0.15;0.03" dur="6s" begin="2s" repeatCount="indefinite" />
+            </line>
+            {/* Regular floating particles */}
             {[
               { cx: '8%', cy: '25%', r: 2.5, delay: '0s', dur: '6s', fill: '#FCA47C' },
               { cx: '22%', cy: '55%', r: 1.5, delay: '1s', dur: '7s', fill: '#F8FAFB' },
@@ -168,15 +199,55 @@ export default function HomePage() {
                 <animate attributeName="cx" values={`${p.cx};${parseFloat(p.cx) + (i % 2 === 0 ? 3 : -3)}%`} dur={p.dur} begin={p.delay} repeatCount="indefinite" />
               </circle>
             ))}
+            {/* BRIGHT accent dots — these pop and twinkle */}
+            {[
+              { cx: '15%', cy: '20%', r: 4, fill: '#23CED9', dur: '2.5s', delay: '0s' },
+              { cx: '72%', cy: '18%', r: 3.5, fill: '#FCA47C', dur: '3s', delay: '0.8s' },
+              { cx: '55%', cy: '75%', r: 4, fill: '#FFFFFF', dur: '2s', delay: '1.5s' },
+              { cx: '85%', cy: '55%', r: 3, fill: '#23CED9', dur: '2.8s', delay: '0.3s' },
+              { cx: '30%', cy: '68%', r: 3.5, fill: '#FCA47C', dur: '3.2s', delay: '2s' },
+              { cx: '45%', cy: '15%', r: 3, fill: '#FFFFFF', dur: '2.2s', delay: '1s' },
+              { cx: '10%', cy: '55%', r: 3.5, fill: '#23CED9', dur: '2.6s', delay: '1.8s' },
+              { cx: '90%', cy: '30%', r: 3, fill: '#FCA47C', dur: '3.5s', delay: '0.5s' },
+              { cx: '62%', cy: '42%', r: 4.5, fill: '#FFFFFF', dur: '2.4s', delay: '2.5s' },
+              { cx: '25%', cy: '40%', r: 3, fill: '#23CED9', dur: '3s', delay: '1.2s' },
+            ].map((p, i) => (
+              <g key={`bright-${i}`}>
+                <circle cx={p.cx} cy={p.cy} r={p.r} fill={p.fill} opacity="0.1"
+                  style={{ animation: `starTwinkleBright ${p.dur} ease-in-out ${p.delay} infinite`, transformOrigin: `${p.cx} ${p.cy}` }}
+                />
+                {/* Glow halo around bright dots */}
+                <circle cx={p.cx} cy={p.cy} r={p.r * 3} fill={p.fill} opacity="0">
+                  <animate attributeName="opacity" values="0;0.12;0" dur={p.dur} begin={p.delay} repeatCount="indefinite" />
+                  <animate attributeName="r" values={`${p.r * 2};${p.r * 4};${p.r * 2}`} dur={p.dur} begin={p.delay} repeatCount="indefinite" />
+                </circle>
+              </g>
+            ))}
+            {/* Rising sparkle particles */}
+            {[
+              { cx: '20%', cy: '85%', fill: '#23CED9', dur: '8s', delay: '0s' },
+              { cx: '40%', cy: '90%', fill: '#FCA47C', dur: '10s', delay: '2s' },
+              { cx: '60%', cy: '88%', fill: '#FFFFFF', dur: '9s', delay: '4s' },
+              { cx: '80%', cy: '92%', fill: '#23CED9', dur: '11s', delay: '1s' },
+              { cx: '35%', cy: '95%', fill: '#FFFFFF', dur: '8.5s', delay: '3s' },
+              { cx: '70%', cy: '87%', fill: '#FCA47C', dur: '9.5s', delay: '5s' },
+            ].map((p, i) => (
+              <circle key={`rise-${i}`} cx={p.cx} cy={p.cy} r="1.5" fill={p.fill} opacity="0"
+                style={{ animation: `driftUp ${p.dur} ease-out ${p.delay} infinite` }}
+              />
+            ))}
           </svg>
-          {/* Light sweep effect */}
-          <Box sx={{
-            position: 'absolute', inset: 0, overflow: 'hidden',
-          }}>
+          {/* Dual light sweep effects */}
+          <Box sx={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
             <Box sx={{
-              position: 'absolute', top: 0, left: 0, width: '50%', height: '100%',
-              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.04), transparent)',
-              animation: 'shimmerSweep 6s ease-in-out infinite',
+              position: 'absolute', top: 0, left: 0, width: '40%', height: '100%',
+              background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent)',
+              animation: 'shimmerSweep 5s ease-in-out infinite',
+            }} />
+            <Box sx={{
+              position: 'absolute', top: 0, right: 0, width: '30%', height: '100%',
+              background: 'linear-gradient(90deg, transparent, rgba(35,206,217,0.04), transparent)',
+              animation: 'shimmerSweep2 8s ease-in-out 2s infinite',
             }} />
           </Box>
         </Box>
@@ -211,7 +282,7 @@ export default function HomePage() {
                 textShadow: '0 2px 30px rgba(0,0,0,0.3)',
               }}
             >
-              One Platform To Orchestrate Every Step Of The Patient Journey
+              {randomTagline}
             </Typography>
             <Typography
               variant="body1"
@@ -226,7 +297,7 @@ export default function HomePage() {
                 textShadow: '0 1px 10px rgba(0,0,0,0.15)',
               }}
             >
-              The only platform with voice-powered AI agents and a scheduler built on clinical context and resource optimization — orchestrating the entire patient journey from referral to survivorship. Configural doesn't just automate. It thinks like a human.
+              AI agents that answer calls, schedule appointments, process referrals, and follow up with patients — working 24/7 across your EMR, phone system, and fax. Your staff focuses on care, not paperwork.
             </Typography>
             <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center">
               <Button
@@ -294,12 +365,12 @@ export default function HomePage() {
               {/* Journey stages */}
               <Grid container spacing={1.5}>
                 {[
-                  { stage: 'Referral Intake', metric: '3 min', metricLabel: 'processing', iconId: 'referral' },
-                  { stage: 'Smart Scheduling', metric: '100%', metricLabel: 'automated', iconId: 'scheduling' },
-                  { stage: 'Active Care', metric: '24/7', metricLabel: 'monitoring', iconId: 'care' },
-                  { stage: 'Patient Outreach', metric: '3x', metricLabel: 'engagement', iconId: 'outreach' },
-                  { stage: 'Care Gaps', metric: '95%', metricLabel: 'closure rate', iconId: 'gaps' },
-                  { stage: 'Survivorship', metric: '100%', metricLabel: 'follow-up', iconId: 'survivorship' },
+                  { stage: 'Referral Intake', iconId: 'referral' },
+                  { stage: 'Smart Scheduling', iconId: 'scheduling' },
+                  { stage: 'Active Care', iconId: 'care' },
+                  { stage: 'Patient Outreach', iconId: 'outreach' },
+                  { stage: 'Care Gaps', iconId: 'gaps' },
+                  { stage: 'Survivorship', iconId: 'survivorship' },
                 ].map((item, i) => (
                   <Grid size={{ xs: 6, sm: 4, md: 2 }} key={i}>
                     <MotionBox
@@ -318,8 +389,8 @@ export default function HomePage() {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        minHeight: { xs: 165, md: 'auto' },
+                        justifyContent: 'space-between',
+                        minHeight: { xs: 165, md: 180 },
                         '&:hover': {
                           background: 'rgba(255,255,255,0.15)',
                           borderColor: '#FCA47C',
@@ -334,11 +405,8 @@ export default function HomePage() {
                       <Typography sx={{ fontSize: '0.75rem', fontWeight: 700, color: '#FFFFFF', textTransform: 'uppercase', letterSpacing: '0.1em', mb: 0.5, textShadow: '0 1px 4px rgba(0,0,0,0.3)' }}>
                         {item.stage}
                       </Typography>
-                      <Typography sx={{ fontFamily: '"Cormorant Garamond Variable", serif', fontSize: '1.8rem', fontWeight: 700, color: '#FCA47C', lineHeight: 1.1, textShadow: '0 1px 8px rgba(252,164,124,0.3)' }}>
-                        {item.metric}
-                      </Typography>
-                      <Typography sx={{ fontSize: '0.65rem', color: 'rgba(255,255,255,0.9)', mt: 0.3, fontWeight: 500 }}>
-                        {item.metricLabel}
+                      <Typography sx={{ fontFamily: '"Cormorant Garamond Variable", serif', fontSize: '1.4rem', fontWeight: 800, color: '#FCA47C', lineHeight: 1.1, textShadow: '0 1px 8px rgba(252,164,124,0.3)', mt: 'auto', pt: 1 }}>
+                        Automated
                       </Typography>
                     </MotionBox>
                   </Grid>
@@ -691,11 +759,11 @@ export default function HomePage() {
                   iconId: 'resource',
                 },
                 {
-                  title: 'AI Infusion Room Manager',
-                  subtitle: 'Chair Scheduling & Flow',
-                  desc: 'Dynamic infusion chair templates that adapt to treatment durations, nursing ratios, and patient acuity. Optimizes chair turnover and timing.',
+                  title: 'AI Treatment Room Manager',
+                  subtitle: 'Room Scheduling & Flow',
+                  desc: 'Dynamic room templates that adapt to treatment durations, staffing ratios, and patient acuity. Optimizes room turnover and timing.',
                   stat: '30%',
-                  statLabel: 'More patients per chair/day',
+                  statLabel: 'More patients per room/day',
                   iconId: 'infusion',
                 },
                 {
@@ -749,7 +817,7 @@ export default function HomePage() {
                 {
                   title: 'AI Survivorship Agent',
                   subtitle: 'Long-Term Follow-Up',
-                  desc: 'Automated surveillance scheduling per NCCN/ASCO guidelines. Tracks imaging, labs, and symptom check-ins across years.',
+                  desc: 'Automated surveillance scheduling per clinical guidelines. Tracks imaging, labs, and symptom check-ins across years.',
                   stat: '0',
                   statLabel: 'Patients lost to follow-up',
                   iconId: 'survivorship',
@@ -1166,7 +1234,7 @@ export default function HomePage() {
               {
                 quote: 'Configural transformed how our entire practice operates. We went from drowning in admin work to actually having time for patients.',
                 name: 'Dr. Emily Thornton',
-                title: 'Medical Director, Multi-Specialty Oncology',
+                title: 'Medical Director, Multi-Specialty Practice',
               },
               {
                 quote: 'The scheduling automation alone saved us 4 FTEs. The AI agents handle complex multi-resource coordination that used to take hours.',
@@ -1273,7 +1341,7 @@ export default function HomePage() {
           {[
             {
               q: 'Can Configural coordinate a surgery across multiple practices and scheduling systems?',
-              a: 'Yes. For a breast surgery case, the AI calls the radiology practice to book pre-surgery localization, calls the hospital OR to reserve the operating room and anesthesia team, and calls the plastic surgeon\'s office to book a reconstructive consult — sequencing everything correctly. The patient receives one consolidated prep guide covering all appointments at all locations.',
+              a: 'Yes. For any surgery requiring coordination across sites, the AI calls the imaging center to book pre-operative studies, calls the hospital OR to reserve the operating room and anesthesia team, and calls the specialist\'s office to book any required consults — sequencing everything correctly. The patient receives one consolidated prep guide covering all appointments at all locations.',
             },
             {
               q: 'What happens when a physician has an emergency day off?',
@@ -1281,7 +1349,7 @@ export default function HomePage() {
             },
             {
               q: 'Can the AI voice agent handle patient phone calls and schedule appointments?',
-              a: 'Yes. Configural\'s AI voice agent answers calls, identifies patients, pulls their full clinical context, and offers available slots conversationally. For simple requests it books end-to-end with no human. For complex cases like chemo rescheduling, it automatically escalates to your scheduling team with full context.',
+              a: 'Yes. Configural\'s AI voice agent answers calls, identifies patients, pulls their full clinical context, and offers available slots conversationally. For simple requests it books end-to-end with no human. For complex cases like multi-step treatment scheduling, it automatically escalates to your scheduling team with full context.',
             },
             {
               q: 'Can it analyze historical data to find scheduling gaps and recommend changes?',

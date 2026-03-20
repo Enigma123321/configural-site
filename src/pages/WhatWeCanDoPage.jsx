@@ -202,8 +202,8 @@ const faqCategories = [
         a: 'The AI analyzes historical data, patient preferences, provider availability, resource utilization, no-show patterns, travel times, appointment dependencies, and operational constraints to suggest optimal scheduling. It prevents conflicts, maximizes efficiency, and optimizes patient satisfaction — all while respecting clinical protocols and resource constraints.',
       },
       {
-        q: 'Can it optimize infusion chair scheduling and nursing ratios?',
-        a: 'Yes. The AI Infusion Room Manager creates dynamic chair templates that adapt to treatment durations, nursing ratios, and patient acuity in real-time. It staggers start times to balance nursing workload, accounts for drug prep time, and manages chair turnover — resulting in 30% more patients per chair per day without increasing staff.',
+        q: 'Can it optimize treatment room scheduling and staffing ratios?',
+        a: 'Yes. The AI Treatment Room Manager creates dynamic room templates that adapt to procedure durations, staffing ratios, and patient acuity in real-time. For example, in an infusion center it staggers chair start times to balance nursing workload and manages turnover — resulting in 30% more patients per room per day without increasing staff.',
       },
       {
         q: 'Does Configural handle room and equipment conflicts?',
@@ -235,19 +235,19 @@ const faqCategories = [
       },
       {
         q: 'Does it manage procedure room and equipment scheduling for different duration appointments?',
-        a: 'Absolutely. The AI maintains real-time awareness of every procedure room, exam room, and shared equipment — each with different capabilities and turnaround times. A 15-minute follow-up, a 45-minute ultrasound, and a 2-hour infusion all get optimally placed. It accounts for room setup/teardown time, equipment sterilization gaps, and staff transitions. When a procedure runs long, it dynamically adjusts subsequent bookings and notifies affected patients.',
+        a: 'Absolutely. The AI maintains real-time awareness of every procedure room, exam room, and shared equipment — each with different capabilities and turnaround times. A 15-minute follow-up, a 45-minute ultrasound, and a 2-hour treatment session all get optimally placed. It accounts for room setup/teardown time, equipment sterilization gaps, and staff transitions. When a procedure runs long, it dynamically adjusts subsequent bookings and notifies affected patients.',
       },
       {
         q: 'Can it handle intelligent appointment rescheduling with dependency awareness?',
         a: 'Yes. When a patient needs to reschedule, the AI doesn\'t just move one appointment — it understands the full chain. Rescheduling a pre-op consult means the surgery date may shift, which means post-op follow-ups shift, which means PT sessions shift. The AI calculates the entire cascade, presents the patient with new options that keep all dependencies intact, and rebooks the full chain in one interaction. No orphaned appointments, no broken sequences.',
       },
       {
-        q: 'How does Configural handle complex chemotherapy and infusion scheduling?',
-        a: 'This is one of our flagship capabilities for oncology practices. The AI parses multi-cycle protocols (R-CHOP, FOLFOX, AC-T), calculates exact cycle dates with rest periods, resolves the full appointment chain per cycle (labs → consult → pharmacy prep → infusion), allocates chairs by duration and acuity, and staggers nursing assignments to prevent overload. It manages pre-medications, hydration time, observation periods, and post-treatment monitoring — all while optimizing chair turnover so practices can treat 30% more patients per day.',
+        q: 'How does Configural handle complex multi-step treatment scheduling?',
+        a: 'The AI parses multi-step treatment protocols, calculates exact session dates with rest periods, and resolves the full appointment chain per cycle (labs → consult → prep → treatment). For example, in oncology it handles chemo protocols like R-CHOP or FOLFOX end-to-end. It allocates rooms by duration and acuity, staggers staffing assignments to prevent overload, and manages prep time, observation periods, and post-treatment monitoring — all while optimizing room turnover so practices can treat 30% more patients per day.',
       },
       {
         q: 'Can it schedule around low patient count days to maximize efficiency?',
-        a: 'Yes. The AI analyzes historical volume patterns and identifies low-census days — Fridays, holiday weeks, summer months. It proactively consolidates appointments, suggests provider template changes (half-day instead of full-day), and fills gaps by pulling forward patients from overbooked days. For infusion centers, it can consolidate chair assignments to free up nursing staff for other duties. The result: consistent daily volume, predictable staffing, and no wasted resources.',
+        a: 'Yes. The AI analyzes historical volume patterns and identifies low-census days — Fridays, holiday weeks, summer months. It proactively consolidates appointments, suggests provider template changes (half-day instead of full-day), and fills gaps by pulling forward patients from overbooked days. For treatment centers, it can consolidate room assignments to free up staff for other duties. The result: consistent daily volume, predictable staffing, and no wasted resources.',
       },
       {
         q: 'Can Configural operate with minimal or no human schedulers?',
@@ -255,7 +255,7 @@ const faqCategories = [
       },
       {
         q: 'How does it handle post-treatment and post-procedure follow-up scheduling?',
-        a: 'The AI automatically generates follow-up schedules based on the procedure type and clinical guidelines. After a knee replacement: 2-week wound check → 6-week X-ray + ortho visit → 3-month functional assessment → 1-year follow-up. After chemotherapy completion: surveillance labs and imaging per NCCN guidelines. After a cardiac stent: medication check at 1 month → stress test at 3 months → annual cardiology follow-up. Every follow-up is pre-scheduled, the patient is reminded, and overdue follow-ups are flagged automatically.',
+        a: 'The AI automatically generates follow-up schedules based on the procedure type and clinical guidelines. For example, after a knee replacement: 2-week wound check → 6-week X-ray + ortho visit → 3-month functional assessment → 1-year follow-up. After a cardiac stent: medication check at 1 month → stress test at 3 months → annual cardiology follow-up. After cancer treatment: surveillance labs and imaging per clinical guidelines. Every follow-up is pre-scheduled, the patient is reminded, and overdue follow-ups are flagged automatically.',
       },
     ],
   },
@@ -277,7 +277,7 @@ const faqCategories = [
       },
       {
         q: 'How does the AI know when to handle something vs. escalate to a human?',
-        a: 'This is a key intelligence feature. For simple requests — rescheduling a PET scan, booking a lab, confirming a follow-up — the AI handles it end-to-end with no human involvement. But for complex scenarios — rescheduling a chemo infusion with pharmacy prep, chair allocation, and linked appointments — the AI automatically creates a task for your scheduling team with full context and urgency level. The patient is told: "I\'ll have our scheduling team call you back within 2 hours."',
+        a: 'This is a key intelligence feature. For simple requests — rescheduling an imaging study, booking a lab, confirming a follow-up — the AI handles it end-to-end with no human involvement. But for complex scenarios — rescheduling a multi-step treatment with prep, room allocation, and linked appointments — the AI automatically creates a task for your scheduling team with full context and urgency level. The patient is told: "I\'ll have our scheduling team call you back within 2 hours."',
       },
       {
         q: 'What patient communication channels does Configural support?',
@@ -325,11 +325,11 @@ const faqCategories = [
     faqs: [
       {
         q: 'Can Configural coordinate surgery across multiple practices and systems?',
-        a: 'Yes. This is one of our most powerful capabilities. For example, for a breast surgery case, the AI calls the radiology practice to book a pre-surgery seed/wire localization, calls the hospital OR scheduling to reserve the operating room and anesthesia team, and calls the plastic surgeon\'s office to book a post-surgery reconstructive consult. It sequences everything correctly: pre-injection → surgery → follow-up. The patient receives one consolidated prep guide covering all 3 appointments at 3 locations.',
+        a: 'Yes. This is one of our most powerful capabilities. For any surgery requiring coordination across sites, the AI calls the imaging center to book pre-operative studies, calls the hospital OR scheduling to reserve the operating room and anesthesia team, and calls the specialist\'s office to book any required consults. It sequences everything correctly: pre-op → surgery → follow-up. The patient receives one consolidated prep guide covering all appointments at all locations.',
       },
       {
-        q: 'How does it handle complex chemotherapy orders?',
-        a: 'When a physician places a complex order like R-CHOP (6 cycles, 21-day intervals), the AI parses the full protocol, generates the complete appointment chain (labs, consult, infusion), resolves dependencies (labs ≥1hr before consult, consult before chemo), calculates resource requirements (chemo chair duration, certified nurse, pharmacy prep), and pre-allocates future cycles. This scheduling plan goes to the scheduler for review and approval — only after approval does the AI contact the patient.',
+        q: 'How does it handle complex multi-step treatment orders?',
+        a: 'When a physician places a complex order — for example, a multi-cycle chemotherapy protocol or a staged surgical plan — the AI parses the full protocol, generates the complete appointment chain (labs, consult, treatment), resolves dependencies (labs before consult, consult before procedure), calculates resource requirements (room duration, specialized staff, prep time), and pre-allocates future sessions. This scheduling plan goes to the scheduler for review and approval — only after approval does the AI contact the patient.',
       },
       {
         q: 'What about pre-surgical documentation — does it track missing records?',
@@ -351,7 +351,7 @@ const faqCategories = [
     faqs: [
       {
         q: 'How does Configural handle physician orders from the EMR?',
-        a: 'The AI reads orders directly from the EMR and classifies them as SIMPLE (single appointment, standard resources — like labs, imaging, follow-ups) or COMPLEX (chemo, infusion, multi-appointment chains, pharmacy prep). Simple orders are auto-scheduled by the AI agent with zero scheduler involvement. Complex orders generate a full scheduling plan that goes to the scheduler for review before any patient contact.',
+        a: 'The AI reads orders directly from the EMR and classifies them as SIMPLE (single appointment, standard resources — like labs, imaging, follow-ups) or COMPLEX (multi-step treatments, multi-appointment chains, specialized prep). Simple orders are auto-scheduled by the AI agent with zero scheduler involvement. Complex orders generate a full scheduling plan that goes to the scheduler for review before any patient contact.',
       },
       {
         q: 'Can it auto-schedule simple orders without any human involvement?',
@@ -359,7 +359,7 @@ const faqCategories = [
       },
       {
         q: 'How does the treatment chain work for complex protocols?',
-        a: 'For a Docetaxel Cycle 1 order, the AI identifies the full chain: pre-treatment labs, physician consult, infusion appointment, and education session. It resolves timing dependencies (labs ≥1hr before consult), calculates resource needs (chemo chair for 2hrs, certified nurse, pharmacy prep), and generates a scheduling plan. The scheduler reviews and approves. Then the AI contacts the patient and books the entire chain in one call.',
+        a: 'For example, for a multi-step treatment order, the AI identifies the full chain: pre-treatment labs, physician consult, treatment session, and education. It resolves timing dependencies (labs ≥1hr before consult), calculates resource needs (room for 2hrs, specialized staff, prep time), and generates a scheduling plan. The scheduler reviews and approves. Then the AI contacts the patient and books the entire chain in one call.',
       },
     ],
   },
@@ -377,7 +377,7 @@ const faqCategories = [
       },
       {
         q: 'How does it handle same-day cancellations?',
-        a: 'When a patient cancels (e.g., a 2-hour chemo slot for tomorrow), the AI immediately detects the open slot, queries the waitlist for matching patients (slot type, duration, chair type), ranks candidates by treatment urgency, proximity, and preference, and contacts the top 3 candidates via automated phone/SMS outreach. The first patient to confirm gets the slot — resources are re-assigned and the scheduler is notified of the successful backfill.',
+        a: 'When a patient cancels (e.g., a 2-hour treatment slot for tomorrow), the AI immediately detects the open slot, queries the waitlist for matching patients (slot type, duration, room type), ranks candidates by clinical urgency, proximity, and preference, and contacts the top 3 candidates via automated phone/SMS outreach. The first patient to confirm gets the slot — resources are re-assigned and the scheduler is notified of the successful backfill.',
       },
       {
         q: 'Can it handle equipment breakdowns or room closures?',
@@ -443,7 +443,7 @@ const faqCategories = [
     faqs: [
       {
         q: 'Can Configural handle the entire referral-to-survivorship journey without manual intervention?',
-        a: 'Absolutely. From the moment a referral fax arrives, Configural reads it via OCR, matches the patient, verifies insurance, schedules the appointment, sends pre-visit prep, monitors active care with real-time symptom tracking, automates post-treatment follow-ups, and manages long-term survivorship surveillance per NCCN/ASCO guidelines — all autonomously.',
+        a: 'Absolutely. From the moment a referral fax arrives, Configural reads it via OCR, matches the patient, verifies insurance, schedules the appointment, sends pre-visit prep, monitors active care with real-time symptom tracking, automates post-treatment follow-ups, and manages long-term surveillance per clinical guidelines — all autonomously.',
       },
       {
         q: 'Does it support CCM and PCM billing?',
@@ -451,7 +451,7 @@ const faqCategories = [
       },
       {
         q: 'How does survivorship surveillance work?',
-        a: 'The AI Survivorship Agent maintains guideline-based surveillance schedules — imaging, labs, symptom check-ins, and wellness assessments per NCCN/ASCO protocols. It automatically schedules follow-ups, sends reminders, and flags overdue patients. Zero patients are lost to follow-up.',
+        a: 'The AI Survivorship Agent maintains guideline-based surveillance schedules — imaging, labs, symptom check-ins, and wellness assessments per clinical protocols. For example, in oncology it follows NCCN/ASCO guidelines. It automatically schedules follow-ups, sends reminders, and flags overdue patients. Zero patients are lost to follow-up.',
       },
       {
         q: 'Can it track care gaps across the patient population?',
