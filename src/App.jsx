@@ -5,6 +5,7 @@ import theme from './theme/theme';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import AnnouncementBanner from './components/AnnouncementBanner';
 
 // Eager-load homepage for fastest FCP
 import HomePage from './pages/HomePage';
@@ -24,6 +25,7 @@ const TermsPage = lazy(() => import('./pages/TermsPage'));
 const WhatWeCanDoPage = lazy(() => import('./pages/WhatWeCanDoPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 const LogoPreview = lazy(() => import('./pages/LogoPreview'));
+const AnnouncementPage = lazy(() => import('./pages/AnnouncementPage'));
 
 const Loading = () => (
   <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
@@ -38,6 +40,7 @@ export default function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Box sx={{ minHeight: '100vh', background: '#FFFFFF' }}>
+          <AnnouncementBanner />
           <Navbar />
           <Suspense fallback={<Loading />}>
             <Routes>
@@ -55,6 +58,7 @@ export default function App() {
               <Route path="/demo" element={<DemoPage />} />
               <Route path="/what-we-can-do" element={<WhatWeCanDoPage />} />
               <Route path="/logo-preview" element={<LogoPreview />} />
+              <Route path="/announcement" element={<AnnouncementPage />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
