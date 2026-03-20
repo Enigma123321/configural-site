@@ -3,8 +3,8 @@ import { Box } from '@mui/material';
 const LogoIcon = ({ size, light }) => {
   const iconSize = size * 0.7;
   const color1 = light ? '#F8FAFB' : '#097C87';
-  const color2 = '#23CED9';
-  const color3 = '#FCA47C';
+  const color2 = light ? '#F8FAFB' : '#097C87';
+  const color3 = light ? '#F8FAFB' : '#097C87';
 
   return (
     <svg
@@ -120,7 +120,7 @@ const Logo = ({ size = 40, light = true, iconOnly = false }) => {
             display: 'flex',
           }}
         >
-          <span style={{ color: '#FCA47C' }}>Configural</span>
+          <span style={{ color: primary }}>Configural</span>
         </Box>
         <Box
           sx={{
@@ -129,9 +129,8 @@ const Logo = ({ size = 40, light = true, iconOnly = false }) => {
             fontSize: `${fontSize * 0.38}px`,
             letterSpacing: '0.14em',
             textTransform: 'uppercase',
-            color: accent,
+            color: light ? 'rgba(248,250,251,0.5)' : 'rgba(9,124,135,0.5)',
             mt: `${size * 0.02}px`,
-            opacity: 0.85,
           }}
         >
           Healthcare Administration

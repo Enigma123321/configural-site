@@ -23,6 +23,7 @@ const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const TermsPage = lazy(() => import('./pages/TermsPage'));
 const WhatWeCanDoPage = lazy(() => import('./pages/WhatWeCanDoPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const LogoPreview = lazy(() => import('./pages/LogoPreview'));
 
 const Loading = () => (
   <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
@@ -53,6 +54,7 @@ export default function App() {
               <Route path="/terms" element={<TermsPage />} />
               <Route path="/demo" element={<DemoPage />} />
               <Route path="/what-we-can-do" element={<WhatWeCanDoPage />} />
+              <Route path="/logo-preview" element={<LogoPreview />} />
               <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </Suspense>
