@@ -92,7 +92,7 @@ export default function Navbar() {
           borderBottom: trigger ? '1px solid rgba(248, 250, 251, 0.1)' : isLightHero ? '1px solid rgba(9, 124, 135, 0.08)' : 'none',
           transition: 'all 0.4s ease',
           zIndex: 1300,
-          top: 'var(--banner-height, 36px)',
+          top: trigger ? 0 : 'var(--banner-height, 36px)',
         }}
       >
         <Container maxWidth="xl" sx={{ px: { xs: 2, md: 8, lg: 12 } }}>
